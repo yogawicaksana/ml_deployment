@@ -17,7 +17,7 @@ This repository contains a simple web interface for predicting calories burned b
 
 ## Installation
 
-2. Dependencies:
+1. Dependencies:
 
     ```bash
     pip install -r requirements.txt
