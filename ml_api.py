@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 import pickle
 import os 
@@ -20,3 +21,9 @@ async def predict_calories(item:PredictCaloriesItem):
     df = pd.DataFrame([item.model_dump().values()], columns=item.model_dump().keys())
     preds = model.predict(df)
     return {'prediction':int(preds)}
+
+@app.get("/", response_class=HTMLResponse)
+async def get_index(request: Request):
+    with open("index.html", "r") as f:
+        html_content = f.read()
+    return HTMLResponse(content=html_content)
