@@ -22,7 +22,7 @@ async def predict_calories(item:PredictCaloriesItem):
     preds = model.predict(df)
     return {'prediction':int(preds)}
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/index", response_class=HTMLResponse)
 async def get_index(request: Request):
     with open("index.html", "r") as f:
         html_content = f.read()
